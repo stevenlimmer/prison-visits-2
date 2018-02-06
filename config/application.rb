@@ -150,5 +150,7 @@ module PrisonVisits
     config.nomis_sentence_status_enabled = feature_flag_value.call do
       ENV['NOMIS_SENTENCE_STATUS_ENABLED']&.downcase == 'true'
     end
+
+    config.govuk_notify_key = ENV.fetch('NOTIFY_API_KEY')
   end
 end

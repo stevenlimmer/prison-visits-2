@@ -14,9 +14,15 @@ en:
       visitor_banned_html: >-
         <strong>%{name} cannot attend</strong> as they are currently
         <strong>banned</strong>
+      visitor_banned_md: >-
+        **%{name} cannot attend** as they are currently
+        **banned**
       visitor_banned_until_html: >-
         <strong>%{name} cannot attend</strong> as they are currently
         <strong>banned</strong> until %{banned_until}
+      visitor_banned_until_md: >-
+        **%{name} cannot attend** as they are currently
+        **banned** until %{banned_until}
       banned_instructions: >-
         Banned visitors should have received a letter to say that they are
         banned from visiting the prison at the moment. Get in touch with
@@ -24,8 +30,15 @@ en:
       visitor_not_on_list_html: >-
         <strong>%{name} cannot attend</strong> as they are
         <strong>not on the prisoner's contact list</strong>
+      visitor_not_on_list_md: >-
+        **%{name} cannot attend** as they are
+        **not on the prisoner's contact list**
       visitor_rejected_other_reason_html: >-
         <strong>%{name} cannot attend</strong><br/>
+        Please contact the prison for more information about why they can’t attend.
+      visitor_rejected_other_reason_md: >-
+        **%{name} cannot attend**
+
         Please contact the prison for more information about why they can’t attend.
       not_on_list_instructions: >-
         Visitors not on contact lists need to ask prisoners to update their

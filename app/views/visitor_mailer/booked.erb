@@ -1,0 +1,103 @@
+<%= t(".salutation", scope: [:visitor_mailer, :booked], name: (@visit.visitor_full_name)) %>
+
+<%= t(".visit_confirmed", prison: (@visit.prison_name)) %>
+
+###<%= format_slot_for_public(@visit.slot_granted) %>
+
+<%= t(".please_arrive") %>
+
+<%= t('.prisoner') %>
+**<%= @visit.prisoner_anonymized_name %>**
+
+<%= t('.number') %>
+<%= @visit.prisoner_number %>
+
+<% @visit.allowed_visitors.each_with_index do |visitor, index| %>
+  <%= t('.visitor', n: index + 1) %>
+  **<%= visitor.anonymized_name %>**
+<% end %>
+
+<%= t(".reference_no") %>
+<%= @visit.reference_no %>
+
+<% if @message&.body.present? %>
+  ##<%= t('.message_title') %>
+  <%= @message.body %>
+<% end %>
+
+<% if @visit.closed? %>
+  <%= t(".this_is_a_closed_visit_html") %>
+<% end %>
+
+<% if @visit.banned_visitors.any? %>
+  <% @visit.banned_visitors.each do |v| %>
+    <% if v.banned_until? %>
+      <%= t('.visitor_banned_until_md', name: v.anonymized_name, banned_until: v.banned_until.to_s(:short_nomis)) %>
+    <% else %>
+      <%= t('.visitor_banned_html', name: v.anonymized_name) %>
+    <% end %>
+  <% end %>
+  <%= t('.banned_instructions') %>
+<% end %>
+
+<% if @visit.unlisted_visitors.any? %>
+  <% @visit.unlisted_visitors.each do |v| %>
+    <%= t('.visitor_not_on_list_md', name: v.anonymized_name) %>
+  <% end %>
+  <%= t('.not_on_list_instructions') %>
+<% end %>
+
+<% if @visit.visitors_rejected_for_other_reasons.any? %>
+  <% @visit.visitors_rejected_for_other_reasons.each do |v| %>
+    <p><%= t('.visitor_rejected_other_reason_htmlag', name: v.anonymized_name) %></p>
+  <% end %>
+<% end %>
+
+<h2><%= t('.cancel_change_title') %></h2>
+
+<% if @override_cancel_link %>
+  <%= t('.cancel_html', url: prison_visit_url(@visit, locale: I18n.locale)) %>
+<% else %>
+  <%= t('.cancel_html', url: link_directory.visit_status(@visit, locale: I18n.locale)) %>
+<% end %>
+
+<%= t(".want_to_change") %>
+a
+<%= t(".questions_about_your_visit") %>
+
+<%= t(".dont_reply") %>
+
+* <%= t(".phone_no") %> **<%= @visit.prison_phone_no %>**
+* <%= t(".email_address") %> **<%= @visit.prison_email_address %>**
+
+##<%= t(".avoid_spam_filtering_title") %>
+
+<%= t(".avoid_spam_filtering_body",
+         email: address_book.no_reply) %>
+
+<%= render('visitor_mailer/visit_info', visit: @visit, ) %>
+
+##<%= t('other_services', scope: [:visitor_mailer, :cross_promote]) %>
+
+###<%= t('money_to_prisoners', scope: [:visitor_mailer, :cross_promote]) %>
+
+<%= t('mtp_details_html', scope: [:visitor_mailer, :cross_promote]) %>
+
+###<%= t('help_with_prison_visits', scope: [:visitor_mailer, :cross_promote]) %>
+
+<%= t('help_details_html', scope: [:visitor_mailer, :cross_promote]) %>
+
+###<%= t('support_for_families', scope: [:visitor_mailer, :cross_promote]) %>
+
+<%= t('support_details_html', scope: [:visitor_mailer, :cross_promote]) %>
+
+##<%= t(".your_data_title") %>
+
+<%= t(".your_data_body") %>
+
+##<%= t(".need_help_title") %>
+
+<%= t(".need_help_body_html",
+      url: link_directory.feedback_submission(locale: I18n.locale)) %>
+
+<%= t(".visit_id") %> <%= @visit.human_id %>

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+docker run --rm \
+       -e GOOGLE_CLIENT_EMAIL="prison-visits@prison-visits-analytics-stag.iam.gserviceaccount.com" \
+       -e GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC7DwZ7J3+hii8e\n60TTzoSqHMzBs6ZcEf3NquOQdmiLn3QXN/M4VdEVuaXAJVDUpSqVJZ6MO4APxqj6\n45PkrdPTP/Uj8KvQB/yJMUsF/Fzqrhbpi9T/uwe86KspaQ2ScLevfD2Vz2UUugBE\njPgowos0VGnby4h81um2cuzBOTCVXJHOjvtqh2VoUkDWKZpagQmSv2RnijYnqg6Q\no/CAZDv4FKtJF9HbeQAvzsoptcaAuAe1lWGWu3b1pfjgYVlZGp6gVTJzmL6qN/HC\nv+KYtPEuIc+XdGYYZ+FyAzrAX6aK0h6G/y8Pph4FLS1E0ULGy7o/ER9FClj09fng\nHBt1+lJhAgMBAAECggEAKC0l+zWUmCGR1VY6xjNJEzB0WfY3+PZ0SMQ3dEO6WKK6\n0HHX73WfHsds7kQVhFalOruFviDZdIn6qUhP74HWST0nbby3aksM1nqb3oFBg7Y4\nfZjm+rY1B0IB4TcLDzTefvZ0U8TjtPvuKssMUdTXCTpIMkkY25ddQy6T4zxhTvLg\nf4bLdJc81m0PNeUWYHa660LsXb3wUUW/rYWyAdah2NXE4YLKFHjfT6zbZUAxupni\n5ymm4eYugpj5tXCxmU8fT+c05mLP5C4qxViB+4lPIh95ulxC7MinXR+IH5l6ZmIL\ntcfP54p6B0Jbu3kE/oj09QD+gTR7P56tzvYL+C+LQQKBgQDwyoUrXQT1uovV/BNd\n6tTdjOCVh9HG58GzvSk6J5Fe0eM9YdR+Zn+rCqwnjrU1qOHqVft+BIuSzPFcE32g\nYzzuhgdbn416Po+ItOajVrIKvPJxh/0QZ3T8c2qoUBdpbqvz8ulsxIXKTjJ1HWpE\nR3KfX9g7OSPJkEuRdBpfS4CpPQKBgQDG361eW+IARX4mH8Yiul1TDWcSXzSmjWtb\nRp1Gr/bOm/qecHi6/Z0XlyDVWF9f+nit1O73gxvgzGXSJ0WDYapRCfZ0THJ0hnbj\nWiyg4oGUGg7sr4xV4/PpCTy9z+qmA9fZ+hYXkNkmpvfBSW9HZiRMmIxqFLi4fnTE\nRdEWCrF39QKBgFLIHV5aHXFpj9eiUPox2LrOSwu9ZPZwCN0FRF406jpiCDC7KHXI\nQU4JXkQ/QLdQ91I7+zlI0L9IbBYOsVrpozIRrAfo45fKWEhUgRJYpN8iNGupp+vy\n1XpRJ7Lzzgi2PrGgqnV1XtW9aoVu9nDA63w1VD6QF2idjg1UkBiA+Zu1AoGAZz5h\n+7WJu4hYOCSQsSC9KEux8ci5RanvTQB4z+S0JYi2cCCFnNXjAwczRW7OfL5EfkIo\nGRjYlTint5Upsk42pEGez7uMQ9A20krTFmbgzGlGzDtKiKCB1L416XiSIcOnAIOj\ninJpOXa+8npUKeXt/FHJu5ysVSNZLTftlxrQDS0CgYBR+Nqd8b8beQJlCcqXTeDK\nePQnvps+8QI7u+W8hMpA9oyFlJPMu48EvBK/GlVs00rWT8h3lA5XSK/7gMTrH7fW\nmugZ3bE/yNkn3DMYMQLfjnb9JrUmlLNbTaN5VqgegSS/uChSh1kGiFvirjLurlJu\ncBjZAbdWjb1NYOBnUKgKGQ==\n-----END PRIVATE KEY-----\n" \
+        -e GA_VIEW_ID_PVBPUBLIC="ga:159786709" \
+        -e GA_VIEW_ID_PVB2="ga:159789910" \
+        -e PUBLIC_PRISONER_CHECK=true \
+        -e PRISONER_DOB=1984-10-03 \
+        -e PRISONER_NUMBER=A5227CW \
+        -e SSO_PASSWORD=gonomisapigo \
+        -e SSO_EMAIL=alan.kennedy+integration@digital.justice.gov.uk \
+        -e PRISON="Wormwood Scrubs" \
+        -e START_PAGE=https://public-staging.pvb.dsd.io/en/request \
+        -e PRISON_START_PAGE=https://staff-staging.pvb.dsd.io/prison/inbox \
+        -e MAILTRAP_API_TOKEN=c9131d7e17802b22b89547c815a2da78 \
+        -e EMAIL=martyn.loughran+integration@digital.justice.gov.uk \
+        -e PASSWORD=readinggaol \
+        registry.service.dsd.io/pvb-integration:latest
